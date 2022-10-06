@@ -148,6 +148,10 @@
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Sticky top</a>
+             <div style="float: right;">   
+            <a class="navbar-brand" href="/prelogin">Login</a>
+            <a class="navbar-brand" href="/presignup">SignUp</a>
+        </div>
         </div>
       </nav>
     <div class="search-container " id="search-container">
@@ -179,17 +183,17 @@
           </select>
         </form>
     </div>
+    <% movie.forEach(film => { %>
     <div class="container mt-1">
-        <h2>Card Image</h2>
-        <p>Image at the top (card-img-top):</p>
         <div class="card" style="width:200px">
-          <img class="card-img-top" src="../bootstrap4/img_avatar1.png" alt="Card image" style="width:100%">
+          <img class="card-img-top" src="../bootstrap4/img_avatar1.png" alt="<%- film.image %>" style="width:100%"><%# movie image url paste here %> 
           <div class="card-body">
-            <h4 class="card-title">John Doe</h4>
-            <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+            <h4 class="card-title"><%-movie.name%></h4>
+            <p class="card-text">Here movie genre is <%- film.genre %> while movie Rating is <%= film.rating %> with <%-film-quality%>  </p>
             <a href="#" class="btn btn-primary">See Profile</a>
           </div>
         </div>
+        <% }) %>
     </body>
     
 

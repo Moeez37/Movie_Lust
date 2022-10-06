@@ -8,7 +8,8 @@ const auth=require('../controller/authorization');
 
 router.get('/prelogin',auth.prelogin);
 router.post('/signup',auth.register);
-router.get('/',auth.signup);
+router.get('/presignup',auth.signup);
 router.post('/postlogin',auth.postlogin);
+
 
 module.exports=router;

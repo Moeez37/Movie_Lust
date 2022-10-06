@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Add Movie</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <form action="/home/add-movie" method="post">
+        <input name="name" type="text">
+        <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg" />
+        <label for="qual">Quality:</label>
+          <select name="Quality" id="qual">
+            <option value="all" >All</option>
+            <option value="480" >480px</option>
+            <option value="720" >720px</option>
+            <option value="HD" >HD</option>
+          </select>
+          <label for="rate">Rating:</label>
+          <select name='rating' id="rate">
+            <option value="4.5" >4.5+</option>
+            <option value="4.0" default>4.0+</option>
+            <option value="3.5" >3.5+</option>
+            <option value="3.0" >3.0+</option>
+          </select>
+          <label for="gen">Genre</label>
+          <select name="genre" id="gen">
+            <option value="action" >action</option>
+            <option value="funny" default>Funny</option>
+            <option value='horor' >Horor</option>
+            <option value="Reality" >Reality</option>
+          </select>
+          <input type="submit" value="Submit">
+        </form>
+</body>
+</html>

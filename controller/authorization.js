@@ -1,12 +1,14 @@
 const subs=require('../model/subscription');
 const path=require('path');
+const bcrypt=require('bcryptjs')
 const { default: mongoose } = require('mongoose');
-const  admin = String("633fb674dfe7ced7cfdc9751");
+const  admin = String("633ffb59b8ba20a732b85c63");
 exports.register=(req,res,next)=>{
+   bcrypt.hash(req.body.password,12).then(encrptedpass=>{
     User=new subs({
         username:req.body.firstname+' '+req.body.lastname,
         email:req.body.email,
-        password: req.body.password
+        password: encrptedpass
     });
     subs.find({email:req.body.email}).then(product=>{
         console.log(product);
@@ -19,6 +21,7 @@ exports.register=(req,res,next)=>{
         req.session.save();
         if(result._id==mongoose.Types.ObjectId(admin))
         {
+            req.session.isadmin=true;
         res.render('home',{
             isauth:true
             ,movie:[],
@@ -43,43 +46,45 @@ exports.register=(req,res,next)=>{
         });
     }
 })
-
+})
 }
 exports.postlogin=(req,res,next)=>{
 subs.findOne({email:req.body.email})
 .then(result=>{
     console.log(result['password']);
     console.log(req.body.password)
-    if(result['password']==req.body.password)
-    {
-        req.session.isloggin=true;
-        req.session.object=result;
-       m=[];
-       if(result._id===mongoose.Types.ObjectId(admin))
-       { console.log(admin);
-       res.render('home',{
-           isauth:true
-           ,movie:[],
-           admin:true
-       });}
-       else{
-           res.render('home',{
-               isauth:true
-               ,movie:[]
-               ,admin:false
-           });
-
-       }
+    bcrypt.compare(req.body.password,result['password'])
+    .then(match=>
+    { console.log('match is :'+match);
+        if(match){
+            req.session.isloggin=true;
+            req.session.object=result;
+            m=[];
+            console.log(result._id.toString()+"   "+(admin))  ;
+       if(result._id.toString()==(admin))
+         {   req.session.isadmin=true;
+            console.log('success to admin');
+                         console.log(admin);
+                                res.render('home',{
+                                 isauth:true
+                                ,movie:[],
+                                admin:true
+                            });
+        }
+        else{
+                        res.render('home',{
+                            isauth:true
+                            ,movie:[],
+                            admin:false })
     }
-    else
-    {
-        res.render('login',{
-            errorinfo:"Password Did'nt match"
-        });
-
-    }
-})
-
+        }
+        else{
+            res.render('login',{
+                errorinfo:"Password Did'nt match"});
+        }
+ })
+    })
+    .catch(err=>{console.log(err);})
 }
 exports.prelogin=(req,res,next)=>{
     res.render('login',{

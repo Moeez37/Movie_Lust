@@ -12,11 +12,15 @@ exports.home_m=(req,res,next)=>{
     });
 }
 exports.getaddpage=(req,res,next)=>{
-    res.render('add_movie');
-
+    if(req.session.isadmin){
+    res.render('add_movie');}
+    else{
+        res.render('login')
+    }
 }
 exports.savemovie=(req,res,next)=>{
-   movie=new movi_info({
+   
+   if(req.session.isadmin){ movie=new movi_info({
     name:req.body.name,
     genre:req.body.genre,
     rating:req.body.rating,
@@ -29,5 +33,9 @@ exports.savemovie=(req,res,next)=>{
    })
    .then(err=>{
     console.log(err);
-   })
+   })}
+   else
+   {
+    res.render('login');
+   }
 }

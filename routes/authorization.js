@@ -10,6 +10,7 @@ router.get('/prelogin',auth.prelogin);
 router.post('/signup',auth.register);
 router.get('/presignup',auth.signup);
 router.post('/postlogin',auth.postlogin);
+router.get('/logout',auth.Logout);
 
 
 module.exports=router;

@@ -15,9 +15,12 @@ exports.register=(req,res,next)=>{
         User.save()
     .then(result=>{
         console.log(result);
-        //req.session.islogin=true;
-        //req.session.object=User;
-        res.render('home');
+        req.session.islogin=true;
+        req.session.object=result;
+        res.render('home',{
+            isauth:true
+            ,movie:[]
+        });
     })
     .catch(err=>{
         console.log(err); 
@@ -34,9 +37,17 @@ exports.register=(req,res,next)=>{
 exports.postlogin=(req,res,next)=>{
 subs.findOne({email:req.body.email})
 .then(result=>{
-    if((result['password']==req.body.password)&&result.length==1)
+    console.log(result['password']);
+    console.log(req.body.password)
+    if(result['password']==req.body.password)
     {
-        res.render("home");
+        req.session.isloggin=true;
+        req.session.object=result;
+       m=[];
+        res.render("home",{
+            isauth:true,
+            movie:m
+        });
     }
     else
     {
@@ -56,5 +67,14 @@ exports.prelogin=(req,res,next)=>{
 exports.signup=(req,res,next)=>{
     res.render('signup',{
         errorinfo:""
-    });
-}
+    });}
+    exports.Logout=(req,res,next)=>{
+        req.session.destroy((err)=>{
+            console.log(err);
+            mov=[];
+            res.render('home',{
+                isauth:false
+                ,movie:mov
+            })
+        });
+        }

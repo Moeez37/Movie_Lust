@@ -148,10 +148,18 @@
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Sticky top</a>
-             <div style="float: right;">   
+          <% if (!isauth) { %>
+           
+            
+          <div style="float: right;">   
             <a class="navbar-brand" href="/prelogin">Login</a>
             <a class="navbar-brand" href="/presignup">SignUp</a>
         </div>
+        <% } else { %>
+          <div style="float: right;">   
+            <a class="navbar-brand" href="/logout">Logout</a>
+        </div>
+        <% } %> 
         </div>
       </nav>
     <div class="search-container " id="search-container">

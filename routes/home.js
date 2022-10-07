@@ -6,3 +6,4 @@ const router=express.Router();
 const home=require('../controller/home');
 
 router.get('/',home.home_m);
+module.exports=router;

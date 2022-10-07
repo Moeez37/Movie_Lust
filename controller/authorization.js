@@ -1,8 +1,7 @@
 const subs=require('../model/subscription');
-const path=require('path')
-exports.login=(req,res,next)=>{
-
-}
+const path=require('path');
+const { default: mongoose } = require('mongoose');
+const  admin = String("633fb674dfe7ced7cfdc9751");
 exports.register=(req,res,next)=>{
     User=new subs({
         username:req.body.firstname+' '+req.body.lastname,
@@ -17,10 +16,22 @@ exports.register=(req,res,next)=>{
         console.log(result);
         req.session.islogin=true;
         req.session.object=result;
+        req.session.save();
+        if(result._id==mongoose.Types.ObjectId(admin))
+        {
         res.render('home',{
             isauth:true
-            ,movie:[]
-        });
+            ,movie:[],
+            admin:true
+        });}
+        else{
+            res.render('home',{
+                isauth:true
+                ,movie:[],
+                admin:false
+            });
+
+        }
     })
     .catch(err=>{
         console.log(err); 
@@ -44,10 +55,21 @@ subs.findOne({email:req.body.email})
         req.session.isloggin=true;
         req.session.object=result;
        m=[];
-        res.render("home",{
-            isauth:true,
-            movie:m
-        });
+       if(result._id===mongoose.Types.ObjectId(admin))
+       { console.log(admin);
+       res.render('home',{
+           isauth:true
+           ,movie:[],
+           admin:true
+       });}
+       else{
+           res.render('home',{
+               isauth:true
+               ,movie:[]
+               ,admin:false
+           });
+
+       }
     }
     else
     {
@@ -75,6 +97,7 @@ exports.signup=(req,res,next)=>{
             res.render('home',{
                 isauth:false
                 ,movie:mov
+                ,admin:false
             })
         });
         }

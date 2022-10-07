@@ -148,6 +148,9 @@
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Sticky top</a>
+          <% if (admin) { %>
+           <a class="navbar-brand" method="get" href="/home/pre-add-movie">Upload</a>
+          <% } %>
           <% if (!isauth) { %>
            
             

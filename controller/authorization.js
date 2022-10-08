@@ -1,6 +1,6 @@
 const subs=require('../model/subscription');
 const path=require('path');
-const bcrypt=require('bcryptjs')
+const bcrypt=require('bcryptjs');
 const { default: mongoose } = require('mongoose');
 const  admin = String("633ffb59b8ba20a732b85c63");
 exports.register=(req,res,next)=>{

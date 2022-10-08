@@ -26,6 +26,7 @@
   <h2>Login</h2>
   <h4 name="error_info"   style="text-align:center;color:red"><%- errorinfo %></h4>
   <form action="/postlogin" method="post" id="login">
+    
     <div class="mb-3 mt-3">
       <label for="email">Email:</label>
       <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
@@ -42,6 +43,7 @@
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
+<input type="hidden" name="_csrf" value="<%- abc %>">
 Click For <a href="/presignup" method="get">Signup</a>
 </div>
 </body>

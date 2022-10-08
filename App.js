@@ -1,4 +1,5 @@
 const express=require('express');
+const csrf = require('csurf');
 const body_parse= require('body-parser');
 const Session=require('express-session');
 const Mongosession=require('connect-mongodb-session')(Session);
@@ -9,11 +10,12 @@ const app=express();
 const auth=require('./routes/authorization');
 const  mongoos = require('mongoose');
 
+
 const Store=new Mongosession({
     uri:'mongodb+srv://Moeez:bsef19a537@cluster0.076ljp2.mongodb.net/Movie-lust?retryWrites=true&w=majority',
     collection:'sessions'
 })
-
+const csrfProtection = csrf();
 app.set("view engine","ejs");
 app.set("views","views")
 app.use(Session({ 
@@ -22,9 +24,15 @@ app.use(Session({
     saveUninitialized:false,
     store:Store                 //to store session on mongo
 }));
+app.use(csrfProtection);
 
 app.use(body_parse.urlencoded({extended:false}));   //For url parsing
 app.use(express.static(path.join(__dirname,'public'))); //setting folder that includes views satic file i.e backgound img etc
+app.use((req, res, next) => {
+    res.locals.csrfToken = req.csrfToken();
+    res.locals.abc=req.csrfToken();
+    next();
+  });
 app.use('/',auth);
 app.use('/',home);
 mongoos.connect("mongodb+srv://Moeez:bsef19a537@cluster0.076ljp2.mongodb.net/Movie-lust?retryWrites=true&w=majority")

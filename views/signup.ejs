@@ -38,6 +38,7 @@
   <h2>Signup</h2>
   <h4 name="error_info"   style="text-align:center;color:red"><%=errorinfo%></h4>
   <form action="/signup" method="post" id="login">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
    <div class="input-group mb-2 mt-3">
         <input type="text" class="form-control" id='firstname' name="firstname" placeholder="FirstName">
         

@@ -1,5 +1,9 @@
+const jwt=require('jsonwebtoken');
+const mongoos = require('mongoose');
+
 const movie = require('../model/movie');
 const movi_info =require('../model/movie');
+
 
 exports.home_m=(req,res,next)=>{
     movi_info.find()
@@ -12,7 +16,9 @@ exports.home_m=(req,res,next)=>{
     });
 }
 exports.getaddpage=(req,res,next)=>{
-    if(req.session.isadmin){
+
+    let decision= async (jwt.verify(req.session.t,'moeez hayder'));
+    if(decision._id==mongoos.Types.ObjectId("633ffb59b8ba20a732b85c63")){
     res.render('add_movie');}
     else{
         res.render('login')

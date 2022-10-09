@@ -1,5 +1,6 @@
 const subs=require('../model/subscription');
 const path=require('path');
+const jwt=require('jsonwebtoken');
 const bcrypt=require('bcryptjs');
 const { default: mongoose } = require('mongoose');
 const  admin = String("633ffb59b8ba20a732b85c63");
@@ -22,6 +23,10 @@ exports.register=(req,res,next)=>{
         if(result._id==mongoose.Types.ObjectId(admin))
         {
             req.session.isadmin=true;
+            const token=jwt.sign({user:result},'moeez hayder');
+            req.session("t", token, {
+                expire: new Date() + 9999
+              });
         res.render('home',{
             isauth:true
             ,movie:[],
@@ -35,6 +40,8 @@ exports.register=(req,res,next)=>{
             });
 
         }
+        /* newly added code*/
+        
     })
     .catch(err=>{
         console.log(err); 
@@ -48,6 +55,7 @@ exports.register=(req,res,next)=>{
 })
 })
 }
+
 exports.postlogin=(req,res,next)=>{
 subs.findOne({email:req.body.email})
 .then(result=>{
@@ -106,3 +114,4 @@ exports.signup=(req,res,next)=>{
             })
         });
         }
+        

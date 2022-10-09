@@ -15,7 +15,7 @@ const Store=new Mongosession({
     uri:'mongodb+srv://Moeez:bsef19a537@cluster0.076ljp2.mongodb.net/Movie-lust?retryWrites=true&w=majority',
     collection:'sessions'
 })
-const csrfProtection = csrf();
+// const csrfProtection = csrf();
 app.set("view engine","ejs");
 app.set("views","views")
 app.use(Session({ 
@@ -24,7 +24,7 @@ app.use(Session({
     saveUninitialized:false,
     store:Store                 //to store session on mongo
 }));
-app.use(csrfProtection);
+// app.use(csrfProtection);
 
 app.use(body_parse.urlencoded({extended:false}));   //For url parsing
 app.use(express.static(path.join(__dirname,'public'))); //setting folder that includes views satic file i.e backgound img etc

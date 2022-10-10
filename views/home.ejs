@@ -115,7 +115,7 @@
    <!-- Carousel -->
    <div class="container mt3">
 <div id="demo" class="carousel slide" data-bs-ride="carousel">
-  <!--<input type="hidden" name="_csrf" value="<%= csrfToken %> " >-->
+  <!--<input type="hidden" name="_csrf" value=" " >-->
     <!-- Indicators/dots -->
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
@@ -147,7 +147,7 @@
 </div>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
         <div class="container-fluid">
-          <input type="hidden" name="_csrf" value="<%= csrfToken %> " >
+          <!-- <input type="hidden" name="_csrf" value=" " > -->
           <div style="float:left">
           <a class="navbar-brand" href="#">Sticky top</a>
           <% if (admin) { %>
@@ -172,7 +172,7 @@
     <div class="search-container " id="search-container">
         
         <form action="#">
-          <input type="hidden" name="_csrf" value="<%= csrfToken %> " >
+          <!-- <input type="hidden" name="_csrf" value="" > -->
           <input type="text" class="search" placeholder="Search.." name="search" size="70" width="40px">
           <button type="submit"><i class="fa fa-search"></i>Search</button>
           <br>
@@ -205,7 +205,7 @@
           <img class="card-img-top" src="../bootstrap4/img_avatar1.png" alt="<%- film.image %>" style="width:100%"><%# movie image url paste here %> 
           <div class="card-body">
             <h4 class="card-title"><%-movie.name%></h4>
-            <p class="card-text">Here movie genre is <%- film.genre %> while movie Rating is <%= film.rating %> with <%-film-quality%>  </p>
+            <p class="card-text">Here movie genre is <%- film.genre %> while movie Rating is <%= film.rating %> with <%%>  </p>
             <a href="#" class="btn btn-primary">See Profile</a>
           </div>
         </div>

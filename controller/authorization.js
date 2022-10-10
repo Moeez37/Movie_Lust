@@ -23,10 +23,6 @@ exports.register=(req,res,next)=>{
         if(result._id==mongoose.Types.ObjectId(admin))
         {
             req.session.isadmin=true;
-            const token=jwt.sign({user:result},'moeez hayder');
-            req.session("t", token, {
-                expire: new Date() + 9999
-              });
         res.render('home',{
             isauth:true
             ,movie:[],

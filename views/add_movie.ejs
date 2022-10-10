@@ -9,10 +9,11 @@
     <script src='main.js'></script>
 </head>
 <body>
-    <form action="/home/post-add-movie" method="post">
-      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <form action="/home/post-add-movie" method="post" enctype="multipart/form-data">
+      <!-- <input type="hidden" name="_csrf" value=""> -->
         <input name="name" type="text" placeholder="name">
-        <input name="image" type="text" placeholder="image">
+        <label for="File">Movie</label>
+        <input name="movie" id="Files" type="file" placeholder="image">
         <label for="qual">Quality:</label>
           <select name="quality" id="qual">
             <option value="all" >All</option>

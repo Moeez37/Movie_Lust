@@ -19,10 +19,6 @@ const scheme=new schema({
         type:String,
         required:true
     },
-    image:{
-        type:String,
-        required:true
-    }
 
 });
 module.exports=mongoos.model('movie-info',scheme);

@@ -40,6 +40,8 @@ exports.savemovie=(req,res,next)=>{
    
    if(req.session.isadmin){ movies=new movi_info({
     name:req.body.name,
+    imageurl:"files/movies"+req.session.movi,
+    videourl:"files/images"+req.session.iamge,
     genre:req.body.genre,
     rating:req.body.rating,
     quality:req.body.quality,

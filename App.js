@@ -13,7 +13,7 @@ const  mongoos = require('mongoose');
 
 const filestorage=multer.diskStorage({
     destination:(req,file,cb)=>{
-        cb(null,'files')
+        cb(null,'files/movies')
     },
     filename:(req,file,cb)=>{
         cb(null,Date.now()+'-'+file.originalname)

@@ -69,17 +69,10 @@ subs.findOne({email:req.body.email})
          {   req.session.isadmin=true;
             console.log('success to admin');
                          console.log(admin);
-                                res.render('home',{
-                                 isauth:true
-                                ,movie:[],
-                                admin:true
-                            });
+                         res.redirect('/');
         }
         else{
-                        res.render('home',{
-                            isauth:true
-                            ,movie:[],
-                            admin:false })
+            res.redirect('/');
     }
         }
         else{
@@ -100,14 +93,12 @@ exports.signup=(req,res,next)=>{
         errorinfo:""
     });}
     exports.Logout=(req,res,next)=>{
+        req.session.isloggin=false
+        req.session.isadmin=false
         req.session.destroy((err)=>{
             console.log(err);
-            mov=[];
-            res.render('home',{
-                isauth:false
-                ,movie:mov
-                ,admin:false
-            })
+            
+            res.redirect('/');
         });
         }
         

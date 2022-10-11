@@ -1,26 +1,33 @@
-const mongoos = require('mongoose');
-
-const movie = require('../model/movie');
+// const mongoos = require('mongoose');
+const path=require('path');
+const fs=require('fs');
+// const movie = require('../model/movie');
 const movi_info =require('../model/movie');
 
 
 exports.home_m=(req,res,next)=>{
     movi_info.find()
     .then(result=>{
-        if(req.session.isloggin && req.session.isadmin){
+        if(req.session.isloggin &&  !req.session.isadmin){
         res.render('home',{
            isauth:true,
             movie:result,
-            admin:true
+            admin:false
         });}
-        else{
+        else if(req.session.isadmin){
             res.render('home',{
-                isauth:false,
+                isauth:true,
                  movie:result,
-                 admin:false
-        });
-    }
-});
+                 admin:true
+        });}
+        else {
+            res.render('home',{
+               isauth:false,
+               movie:result,
+               admin:false 
+            });
+        }
+    })
 }
 exports.getaddpage=(req,res,next)=>{
     if(req.session.isadmin){
@@ -50,4 +57,16 @@ exports.savemovie=(req,res,next)=>{
    {
     res.render('login');
    }
+}
+exports.getfilehtd=(req,res,next)=>{
+    const pdfpath=path.join('Data','how_to_download.pdf');
+    fs.readFile(pdfpath,(err,data)=>{
+    if(err)
+    {console.log(err)}
+    else{
+        res.setHeader('Content-Type','application/pdf');
+        res.setHeader('Content-Disposition','inline; filename="'+"How_to_downoad.pdf"+'"')
+        res.send(data);
+    }
+});
 }

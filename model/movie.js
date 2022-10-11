@@ -7,6 +7,14 @@ const scheme=new schema({
         type:String,
         required:true
     },
+    imageurl:{
+        type:String,
+        required:true
+    },
+    videourl:{
+        type:String,
+        required:true
+    },
     genre:{
         type:String,
         required:true

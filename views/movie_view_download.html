@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title></title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<%- include('../includes/head.ejs') %>
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+        <main class="centered">
+            <h1><%= product.name %></h1>
+            <hr>
+            <div class="image">
+                <img src="/<%= product.imageUrl %>" alt="<%= product.title %>">
+            </div>
+            <span>
+            <h5>  product.genre %></h5>
+            <h5><%=product.rating %></h5>
+            <h5><%=product.quality %></h5></span>
+            <h2><%= product.price %></h2>
+            <p><%= product.description %></p>
+            <a href="/download:<%-product._id%>"><button  value="Download">Download</button></a> 
+        </main>
+        

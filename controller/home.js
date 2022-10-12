@@ -49,7 +49,7 @@ exports.savemovie=(req,res,next)=>{
    }); 
    movies.save()
    .then(result=>{
-    console.log(result);
+    console.log('ok')
    res.redirect('/')
    })
    .catch(err=>{
@@ -74,7 +74,7 @@ exports.getfilehtd=(req,res,next)=>{
 });
 }
 exports.getmovidetailview=(req,res,next)=>{
-    const movieID = req.params['movie_ID'];
+    const movieID = req.query.movie_ID;
     console.log(movieID);
     movi_info.findById(movieID)
     .then(movi => {
@@ -88,15 +88,17 @@ exports.getmovidetailview=(req,res,next)=>{
         console.log(err)
     });
 }
-exports.downloadmovie=(req,res,next)=>{
- const ID=req.body.movieID;
- movie_info.finfOne(ID)
- .then((data)=>{
-    const adressmovie=data.videourl;
-    const file=fs.createReadStream(adressmovie);
+exports.getdownload=(req,res,next)=>{
+ if(req.query.download)
+{ try{
+    const file=fs.createReadStream(req.query.download);
     // res.setHeader('Content-Type','');
     res.setHeader('Content-Disposition','inline; filename="'+data.name+'.mp4"');
     file.pipe(res);
- })   
-     
+}
+catch(Error)
+{
+    console.log(Error)
+}
+}    
 }

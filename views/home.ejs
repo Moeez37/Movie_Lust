@@ -211,7 +211,7 @@
           <div class="card-body">
             <h4 class="card-title"><%-film.name%></h4>>
          <p class="card-text">Here movie genre is <%-film._id %> <%- film.genre %> while movie Rating is <%- film.rating %> with <%%>  </p>
-            <a name="movie_ID "href="/home/file/:movie_ID=<%- film._id %>" class="btn">Download</a>
+            <a name="movie_ID "href="/home/film?movie_ID=<%- film._id %>" class="btn">Download</a>
           </div></div>
        
         <% } %>

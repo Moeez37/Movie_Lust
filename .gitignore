@@ -1,4 +1,5 @@
 node_modules
 .vscode
-./files/movies
+files
 .gitignore
+Data

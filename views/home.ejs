@@ -203,18 +203,18 @@
     <div class=".test" style="display: flex;
     flex-direction: row;">
     <div class="container mt-1">
-    <% movie.forEach(film => { %>
+    <% for(let film of movie) { %>
     
       
         <div class="card" style="width:200px">
-          <img class="card-img-top" src="../bootstrap4/img_avatar1.png" alt="<%- film.image %>" style="width:100%"><%# movie image url paste here %> 
+          <img class="card-img-top" src="<%- film.imageurl  %> " alt="<%- film.image %>" style="width:100%"><%# movie image url paste here %> 
           <div class="card-body">
-            <h4 class="card-title"><%-movie.name%></h4>
-            <p class="card-text">Here movie genre is <%- film.genre %> while movie Rating is <%= film.rating %> with <%%>  </p>
-            <a name="movieID "href="/home:<%= movie._id %>" class="btn">Download</a>
+            <h4 class="card-title"><%-film.name%></h4>>
+         <p class="card-text">Here movie genre is <%-film._id %> <%- film.genre %> while movie Rating is <%- film.rating %> with <%%>  </p>
+            <a name="movie_ID "href="/home/file/:movie_ID=<%- film._id %>" class="btn">Download</a>
           </div></div>
        
-        <% }) %>
+        <% } %>
       </div>
   
   </div>

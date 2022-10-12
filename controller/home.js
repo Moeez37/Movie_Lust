@@ -74,19 +74,22 @@ exports.getfilehtd=(req,res,next)=>{
 });
 }
 exports.getmovidetailview=(req,res,next)=>{
-    const movieID = req.params.movieID;
+    const movieID = req.params['movie_ID'];
+    console.log(movieID);
     movi_info.findById(movieID)
-    .then(movie => {
-      res.render('movie_view_download', {
-        movie: movie,
-      });
-    })
+    .then(movi => {
+        if(movi){
+        console.log(movi)
+    //   res.render('movie_view_download', {
+    //     movie: movi
+    //   });
+}})
     .catch(err => {
-        consosle.log(err)
-    })
+        console.log(err)
+    });
 }
 exports.downloadmovie=(req,res,next)=>{
- const ID=req.params.movieID;
+ const ID=req.body.movieID;
  movie_info.finfOne(ID)
  .then((data)=>{
     const adressmovie=data.videourl;

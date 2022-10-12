@@ -1,0 +1,127 @@
+1
+00:00:02,210 --> 00:00:08,690
+Nachdem ich mir nun die Grundlagen und die wichtigsten Wendungen angesehen habe, müssen Sie wissen, dass wir uns mit der JavaScript-Syntax
+
+2
+00:00:08,690 --> 00:00:13,130
+der nächsten Generation befassen, die Sie in diesem Modul in diesem Kurs sehen werden.
+
+3
+00:00:14,950 --> 00:00:22,060
+War ist ein Schlüsselwort, das eine neue Variable erstellt, und tatsächlich ist es von nun an ein
+
+4
+00:00:22,060 --> 00:00:28,360
+bisschen veraltet. Syntex verwendet let anstelle von war und let erstellt auch eine Variable.
+
+5
+00:00:28,780 --> 00:00:32,470
+Das Scoping verhält sich etwas anders, aber das können wir vorerst ignorieren.
+
+6
+00:00:32,470 --> 00:00:38,500
+Schauen Sie sich hier einige JavaScript-Ressourcen der nächsten Generation an, wie z. B. meine sechs Kurse oder natürlich alle kostenlosen
+
+7
+00:00:38,500 --> 00:00:40,720
+Ressourcen, um alles über let zu erfahren.
+
+8
+00:00:41,230 --> 00:00:48,490
+Der Hauptgrund für die Verwendung von Lettice ist jedoch, dass wir jetzt auch eine andere Möglichkeit haben, eine Variable zu erstellen.
+
+9
+00:00:48,670 --> 00:00:53,380
+Und damit meine ich eine Variable, die sich nie ändert, was hier tatsächlich für alle drei der Fall ist.
+
+10
+00:00:53,800 --> 00:01:00,250
+Nehmen wir an, wir weisen hier tatsächlich jedem einen neuen Wert zu, aber wir ändern niemals den Namen oder haben Hobbys.
+
+11
+00:01:00,790 --> 00:01:02,410
+Das könnten wir absolut gebrauchen.
+
+12
+00:01:02,410 --> 00:01:04,420
+Daran ist nichts strikt Falsches.
+
+13
+00:01:04,720 --> 00:01:10,710
+Aber um klarer über unsere Absichten im Code zu sein und wir wissen, dass sich das nie ändern wird.
+
+14
+00:01:11,020 --> 00:01:11,530
+Lassen.
+
+15
+00:01:12,610 --> 00:01:19,120
+Name und hat Hobbys, wir können auch ein neues Schlüsselwort verwenden, das in JavaScript verfügbar ist, und das ist das Schlüsselwort
+
+16
+00:01:19,240 --> 00:01:19,840
+const.
+
+17
+00:01:20,200 --> 00:01:26,830
+Dies schafft eine sogenannte Konstante und dies macht deutlich, dass wir niemals vorhaben, den Wert des Namens zu ändern oder
+
+18
+00:01:26,860 --> 00:01:27,860
+Hobbys zu haben.
+
+19
+00:01:28,480 --> 00:01:30,400
+Wir planen, das Alter zu ändern.
+
+20
+00:01:30,400 --> 00:01:31,600
+Und deshalb sind wir gegangen.
+
+21
+00:01:32,020 --> 00:01:37,660
+Und das ist der Grund, warum wir zwei verschiedene Schlüsselwörter zum Erstellen von Variablen haben, obwohl dies wiederum
+
+22
+00:01:37,660 --> 00:01:39,280
+keine wirklichen Variablen sind.
+
+23
+00:01:39,280 --> 00:01:45,370
+Es gibt Konstanten, sogar const Aulet, je nachdem, ob Sie dies ändern möchten oder nicht.
+
+24
+00:01:45,820 --> 00:01:49,050
+Wenn Sie dies jetzt ausführen, funktioniert es genauso wie zuvor.
+
+25
+00:01:49,990 --> 00:01:59,680
+Übrigens, wenn wir hier versuchen, den Namen auf Maximilien zu setzen, und ich wieder Node Play Chess ausführe, erhalte ich jetzt
+
+26
+00:01:59,830 --> 00:02:04,450
+tatsächlich einen Fehler, da ich versuche, einer konstanten Variablen zuzuweisen.
+
+27
+00:02:05,580 --> 00:02:12,000
+Dies zeigt uns also bereits die Idee hinter dem Konzept und Sie möchten CONSED so oft wie möglich verwenden, um
+
+28
+00:02:12,270 --> 00:02:15,810
+so klar wie möglich zu sein, was in Ihrem Code passiert.
+
+29
+00:02:16,020 --> 00:02:22,110
+Und wenn sich etwas nie ändern sollte, machen Sie es zu einem Wettbewerb, damit Sie einen Fehler erhalten, wenn Sie es versehentlich
+
+30
+00:02:22,110 --> 00:02:22,610
+ändern.
+
+31
+00:02:22,860 --> 00:02:24,570
+Sie haben diese Änderung also alle neu zusammengestellt.
+
+32
+00:02:24,700 --> 00:02:27,210
+Aber ich wollte dir zeigen, wie Let und Kohn arbeiten sollen.

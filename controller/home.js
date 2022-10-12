@@ -40,8 +40,8 @@ exports.savemovie=(req,res,next)=>{
    
    if(req.session.isadmin){ movies=new movi_info({
     name:req.body.name,
-    imageurl:"files/movies"+req.session.movi,
-    videourl:"files/images"+req.session.iamge,
+    imageurl:"/movies/"+req.session.movi,
+    videourl:"/images/"+req.session.image,
     genre:req.body.genre,
     rating:req.body.rating,
     quality:req.body.quality,
@@ -66,9 +66,34 @@ exports.getfilehtd=(req,res,next)=>{
     if(err)
     {console.log(err)}
     else{
+        const file=fs.createReadStream(pdfpath);
         res.setHeader('Content-Type','application/pdf');
         res.setHeader('Content-Disposition','inline; filename="'+"How_to_downoad.pdf"+'"')
-        res.send(data);
+        file.pipe(res);
     }
 });
+}
+exports.getmovidetailview=(req,res,next)=>{
+    const movieID = req.params.movieID;
+    movi_info.findById(movieID)
+    .then(movie => {
+      res.render('movie_view_download', {
+        movie: movie,
+      });
+    })
+    .catch(err => {
+        consosle.log(err)
+    })
+}
+exports.downloadmovie=(req,res,next)=>{
+ const ID=req.params.movieID;
+ movie_info.finfOne(ID)
+ .then((data)=>{
+    const adressmovie=data.videourl;
+    const file=fs.createReadStream(adressmovie);
+    // res.setHeader('Content-Type','');
+    res.setHeader('Content-Disposition','inline; filename="'+data.name+'.mp4"');
+    file.pipe(res);
+ })   
+     
 }

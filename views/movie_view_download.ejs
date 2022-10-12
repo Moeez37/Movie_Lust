@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Download</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+    </head>
+
+    <body>
+        <main class="centered">
+            <h1><%= movie.name %></h1>
+            <hr>
+            <div class="image">
+                <img src="/<%= movie.imageUrl %>" alt="<%= movie.title %>">
+            </div>
+            <span>
+            <h5><%  movie.genre %></h5>
+            <h5><%=movie.rating %></h5>
+            <h5><%=movie.quality %></h5></span>
+            <h2><%= movie.price %></h2>
+           
+            <a href="/products/<%= movie._id %>" class="btn">Details</a>        
+        </main>
+        </body>
+</html>
+        

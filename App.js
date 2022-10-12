@@ -11,6 +11,7 @@ const app=express();
 const auth=require('./routes/authorization');
 const  mongoos = require('mongoose');
 const { syncBuiltinESMExports } = require('module');
+app.use(body_parse.urlencoded({extended:false}));
 const Store=new Mongosession({
     uri:'mongodb+srv://Moeez:bsef19a537@cluster0.076ljp2.mongodb.net/Movie-lust?retryWrites=true&w=majority',
     collection:'sessions'
@@ -33,14 +34,14 @@ const filestorage=multer.diskStorage({
     filename:(req,file,cb)=>{
         if(file.fieldname=="movie"){
             req.session.movi=Date.now()+'-'+file.originalname+path.extname(file.originalname);
-            if(re.session.movi){
+            if(req.session.movi){
             cb(null,req.session.movi);}
             else{res.send("<h4>Error</h4>")}}
     else if(file.fieldname=='image')
     {
         req.session.image=Date.now()+'-'+file.originalname+path.extname(file.originalname)
-        if(re.session.image){
-        cb(null,req,session.image);}
+        if(req.session.image){
+        cb(null,req.session.image);}
         else{res.send("<h4>Error</h4>")}
     }
     }
@@ -53,7 +54,7 @@ app.set("views","views");
 
 // app.use(csrfProtection);
 
-app.use(body_parse.urlencoded({extended:false})); 
+ 
   //For url parsing
 app.use(multer({storage:filestorage}).fields([
     {

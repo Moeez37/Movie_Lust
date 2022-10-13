@@ -18,6 +18,12 @@
             color: white;
             
         }
+        .row{
+          margin:5px;
+        }
+        body{
+          background-color: rgb(40, 42, 97);
+        }
         .footer-dark {
   padding:50px 0;
   color:#f0f9ff;
@@ -200,24 +206,21 @@
           </select>
         </form>
     </div>
-    <div class=".test" style="display: flex;
-    flex-direction: row;">
-    <div class="container mt-1">
+    <div class="row">
     <% for(let film of movie) { %>
     
-      
+      <div class="col-sm-6">
         <div class="card" style="width:200px">
-          <img class="card-img-top" src="<%- film.imageurl  %> " alt="<%- film.image %>" style="width:100%"><%# movie image url paste here %> 
+          <img  length="100px" width="100px" class="card-img-top" src="<%- film.imageurl  %> " alt="<%- film.image %>" ><%# movie image url paste here %> 
           <div class="card-body">
             <h4 class="card-title"><%-film.name%></h4>>
          <p class="card-text">Here movie genre is <%-film._id %> <%- film.genre %> while movie Rating is <%- film.rating %> with <%%>  </p>
             <a name="movie_ID "href="/home/film?movie_ID=<%- film._id %>" class="btn">Download</a>
           </div></div>
+        </div>
        
         <% } %>
       </div>
-  
-  </div>
     </body>
   
 

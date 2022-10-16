@@ -15,7 +15,7 @@ app.use(body_parse.urlencoded({extended:false}));
 const Store=new Mongosession({
     uri:'mongodb+srv://Moeez:bsef19a537@cluster0.076ljp2.mongodb.net/Movie-lust?retryWrites=true&w=majority',
     collection:'sessions'
-})
+});
 app.use(Session({ 
     secret:"my session",
     resave:false,                   

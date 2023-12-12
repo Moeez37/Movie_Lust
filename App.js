@@ -71,7 +71,7 @@ app.use(express.static(path.join(__dirname,'public'))); //setting folder that in
 app.use('/home',home);
 app.use('/',auth);
 
-mongoos.connect("mongodb+srv://Moeez:bsef19a537@cluster0.076ljp2.mongodb.net/Movie-lust?retryWrites=true&w=majority")
+mongoos.connect("url")
 .then(result=>{
     console.log('connected');
     app.listen(3000);
